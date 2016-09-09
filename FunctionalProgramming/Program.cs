@@ -28,19 +28,6 @@ namespace FunctionalProgramming
             Console.WriteLine("Grade Average without three lowest scores: {0:00.00}\n", studentB.Split(',').Select(int.Parse).ToArray().OrderBy(c => c).Skip(3).Average());
 
 
-            //Starting with a LIST of grades
-            //List<int> grades = new List<int>() { 90, 85, 75, 60, 99, 100, 77, 87, 92, 96, 83, 103 };
-
-            //Console.WriteLine("Original List of Grades");
-            //grades.ForEach((x) => { Console.WriteLine(x); });
-
-            //Func<List<int>, double> CalculateGradeAverage;
-            //CalculateGradeAverage = (List<int> x) => { x.Sort(); x.ForEach((y) => { Console.Write(y + ","); }); return x.Skip(3).Average(); };
-
-            //Console.WriteLine("Average (minus lowest three grades): {0:00.00}", CalculateGradeAverage(grades));
-            //Console.ReadLine();
-
-
             //Assignment #2
             //Write a function that takes in a string of letters(e.g., "Llewellyn") and returns an alphabetically ordered string corresponding to the letter frequency (e.g., "E2L4N1W1Y1")
 
@@ -71,12 +58,25 @@ namespace FunctionalProgramming
         {
             string newString = "";
 
-            Dictionary<char,int> counts = name.ToLower().GroupBy(character => character).OrderBy(character => character.Key).ToDictionary(group => group.Key, group => group.Count());
+            Dictionary<char,int> counts = name.ToUpper().GroupBy(character => character).OrderBy(character => character.Key).ToDictionary(group => group.Key, group => group.Count());
             foreach (KeyValuePair<char,int> item in counts)
             {
                 newString += item.Key.ToString() + item.Value;
             }
             return newString;
         }
+
+        //Assignment #1 
+        //Starting with a LIST of grades
+        //List<int> grades = new List<int>() { 90, 85, 75, 60, 99, 100, 77, 87, 92, 96, 83, 103 };
+
+        //Console.WriteLine("Original List of Grades");
+        //grades.ForEach((x) => { Console.WriteLine(x); });
+
+        //Func<List<int>, double> CalculateGradeAverage;
+        //CalculateGradeAverage = (List<int> x) => { x.Sort(); x.ForEach((y) => { Console.Write(y + ","); }); return x.Skip(3).Average(); };
+
+        //Console.WriteLine("Average (minus lowest three grades): {0:00.00}", CalculateGradeAverage(grades));
+        //Console.ReadLine();
     }
 }
