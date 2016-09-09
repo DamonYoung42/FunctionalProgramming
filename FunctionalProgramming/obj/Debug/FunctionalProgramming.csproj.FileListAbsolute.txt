@@ -1,0 +1,6 @@
+C:\Users\usf00_000\Documents\DevCodeCamp\Projects\FunctionalProgramming\FunctionalProgramming\bin\Debug\FunctionalProgramming.exe.config
+C:\Users\usf00_000\Documents\DevCodeCamp\Projects\FunctionalProgramming\FunctionalProgramming\obj\Debug\FunctionalProgramming.csprojResolveAssemblyReference.cache
+C:\Users\usf00_000\Documents\DevCodeCamp\Projects\FunctionalProgramming\FunctionalProgramming\bin\Debug\FunctionalProgramming.exe
+C:\Users\usf00_000\Documents\DevCodeCamp\Projects\FunctionalProgramming\FunctionalProgramming\bin\Debug\FunctionalProgramming.pdb
+C:\Users\usf00_000\Documents\DevCodeCamp\Projects\FunctionalProgramming\FunctionalProgramming\obj\Debug\FunctionalProgramming.exe
+C:\Users\usf00_000\Documents\DevCodeCamp\Projects\FunctionalProgramming\FunctionalProgramming\obj\Debug\FunctionalProgramming.pdb
