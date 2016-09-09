@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace FunctionalProgramming
 {
@@ -42,8 +43,12 @@ namespace FunctionalProgramming
             {
                 Console.WriteLine(item + ": " + CharacterCount(item));
             }
-            Console.ReadLine();                   
+            Console.ReadLine();
 
+            //Assignment #3 ... Write a LINQ operation that takes in a log file path, a start timestamp and end timestamp and parses a log file to only return dates within that date range.    
+            string fileName = "Sample.txt";        
+            ParseLogFile(fileName, "07/Mar/2004:17:39:39", "07/Mar/2004:17:50:44");
+            Console.ReadLine();
         }
 
         public delegate string StringToDoubleFunction(string grades);
@@ -65,6 +70,47 @@ namespace FunctionalProgramming
             }
             return newString;
         }
+
+
+        public static void ParseLogFile(string fileName, string startTimestamp, string endTimestamp)
+        {
+            string startdate = startTimestamp;
+            string enddate = endTimestamp;
+            string[] lines = File.ReadAllLines(fileName);
+
+            //var startingLineNumber = lines.Select(i => new { index = i }).Where((n,i) => n.Contains(startTimestamp));
+            //var startingLine = lines.Select((index).Where(r => lines.Contains(startTimestamp));
+            var  startingLineNumber = lines.Select((r, i) => new { line = r, index = i }).Where(r => r.line.Contains(startTimestamp)).Select(r => new { LineNo = r.index });
+            var endingLineNumber = lines.Select((r, i) => new { line = r, index = i }).Where(r => r.line.Contains(endTimestamp)).Select(r => new { LineNo = r.index });
+
+            for (int i = startingLineNumber.First().LineNo; i < endingLineNumber.First().LineNo + 1; i++)
+            {
+                Console.WriteLine(lines[i]);
+            }      
+
+
+            
+
+            //for (int i = startingLineNumber; i < endingLineNumber + 1; i++)
+            //{
+            //    Console.WriteLine(lines[i]);
+            //}
+
+
+            //string content = File.ReadAllText("Sample.txt");
+            //int start = content.IndexOf(startdate);
+            //if (start >= 0)
+            //{
+            //    start += startdate.Length;
+            //    int end = content.IndexOf(enddate, start);
+            //    if (end >= 0)
+            //    {
+            //        string log = content.Substring(start, end - start);
+            //        Console.WriteLine(log);
+            //    }
+            //}
+        }
+            //File.ReadLines(fileName).TakeWhile((x) => x.)
 
         //Assignment #1 
         //Starting with a LIST of grades
