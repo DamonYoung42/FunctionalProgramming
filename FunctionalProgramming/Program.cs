@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Globalization;
-using System.Text.RegularExpressions;
+
 
 namespace FunctionalProgramming
 {
@@ -46,12 +42,8 @@ namespace FunctionalProgramming
                 Console.WriteLine(item + ": " + CharacterCount(item));
             }
 
-            //Assignment #3 ... Write a LINQ operation that takes in a log file path, a start timestamp and end timestamp and parses a log file to only return dates within that date range.    
-            Console.WriteLine("\nWrite out log file entries between starting and ending timestamps");
-
-            string fileName = "Sample.txt";        
-            ParseLogFile(fileName, "07/Mar/2004:17:39:39", "07/Mar/2004:17:50:44");
             Console.ReadLine();
+
         }
 
         public delegate string StringToDoubleFunction(string grades);
@@ -75,48 +67,6 @@ namespace FunctionalProgramming
         }
 
 
-        public static void ParseLogFile(string fileName, string startTimestamp, string endTimestamp)
-        {
-            //DateTime startDate, endDate;
 
-            //DateTime.TryParse(startTimestamp, out startDate);
-            //DateTime.TryParse(endTimestamp, out endDate);
-            ////DateTime enddate = DateTime.TryParse(endTimestamp);
-            ////string dateFormat = @"(?<logDate>(\d){2}/(\A-Za-z){3}/(\d){4}:(\d){2}:(\d){2}:(\d){2})";
-            //string dateFormat = @"([0-9])|([0-2][0-9])|([3][0 - 1]))\-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\-\d{ 4}";
-            //Regex dateExpression = new Regex(dateFormat);
-
-            //var lines = File.ReadAllLines(fileName)
-            //    .Select((line) => dateExpression.Match(line));
-            ////.Where(m => m.Success && (DateTime.Parse(m.Value) >= startDate && DateTime.Parse(m.Value, CultureInfo.InvariantCulture) <= endDate));
-
-            //Console.ReadLine();
-            //THIS WORKS!!!!
-            //string startdate = startTimestamp;
-            //string enddate = endTimestamp;
-            string[] lines = File.ReadAllLines(fileName);
-
-            var startingLineNumber = lines.Select((x,y) => new { line = x, index = y }).Where(x => x.line.Contains(startTimestamp)).Select(x => new { lineNumber = x.index });
-            var endingLineNumber = lines.Select((x, y) => new { line = x, index = y }).Where(x => x.line.Contains(endTimestamp)).Select(x => new { lineNumber = x.index });
-
-            for (int i = startingLineNumber.First().lineNumber; i < endingLineNumber.First().lineNumber + 1; i++)
-            {
-                Console.WriteLine(lines[i]);
-            }
-
-
-        }
-
-        //Assignment #1 but starting with a LIST of grades
-        //List<int> grades = new List<int>() { 90, 85, 75, 60, 99, 100, 77, 87, 92, 96, 83, 103 };
-
-        //Console.WriteLine("Original List of Grades");
-        //grades.ForEach((x) => { Console.WriteLine(x); });
-
-        //Func<List<int>, double> CalculateGradeAverage;
-        //CalculateGradeAverage = (List<int> x) => { x.Sort(); x.ForEach((y) => { Console.Write(y + ","); }); return x.Skip(3).Average(); };
-
-        //Console.WriteLine("Average (minus lowest three grades): {0:00.00}", CalculateGradeAverage(grades));
-        //Console.ReadLine();
     }
 }
